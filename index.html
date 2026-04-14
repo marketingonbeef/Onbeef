@@ -263,37 +263,73 @@ nav {
 /* Hero visual */
 .hero-visual {
   position: relative;
-  aspect-ratio: 1;
-  border-radius: 20px;
-  background: #0D0D0D;
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(246,9,3,0.25);
+  padding: 0 16px;
 }
-.hero-visual::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cg stroke='%23F60903' stroke-width='1.5' fill='none' opacity='0.4'%3E%3Cpath d='M 0,100 Q 100,50 200,100 T 400,100'/%3E%3Cpath d='M 0,150 Q 100,100 200,150 T 400,150'/%3E%3Cpath d='M 0,200 Q 100,150 200,200 T 400,200'/%3E%3Cpath d='M 0,250 Q 100,200 200,250 T 400,250'/%3E%3Cpath d='M 0,300 Q 100,250 200,300 T 400,300'/%3E%3C/g%3E%3C/svg%3E");
-  background-size: cover;
-}
+.hero-visual::before { display: none; }
 .hero-stat-card {
   position: relative;
   z-index: 2;
-  text-align: center;
+  text-align: left;
   color: #FFF;
-  padding: 40px;
+  width: 100%;
 }
-.hero-stat-card .h-brush { font-size: clamp(28px, 4vw, 42px); margin-bottom: 12px; }
+.hero-stat-card .h-brush {
+  text-shadow: 0 2px 16px rgba(0,0,0,0.9);
+}
+.hero-stat-card .big-num {
+  text-shadow: 0 2px 24px rgba(0,0,0,0.85);
+}
+.hero-stat-divider {
+  width: 40px;
+  height: 2px;
+  background: #F60903;
+  margin: 18px 0 20px;
+  border-radius: 2px;
+}
+.hero-stat-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 0;
+  text-align: left;
+}
+.hero-stat-row .stat-item {
+  flex: 0 0 auto;
+  padding: 0 28px 0 0;
+  text-align: left;
+}
+.hero-stat-row .stat-item:first-child {
+  border-right: 1px solid rgba(255,255,255,0.18);
+  margin-right: 28px;
+}
+.hero-stat-row .stat-item .stat-val {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(28px, 5vw, 40px);
+  color: #F60903;
+  line-height: 1;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.8);
+}
+.hero-stat-row .stat-item .stat-lbl {
+  font-size: 10px;
+  color: rgba(255,255,255,0.65);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-top: 5px;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+}
+.hero-stat-card .h-brush { font-size: clamp(24px, 3.5vw, 38px); margin-bottom: 10px; display: block; }
 .hero-stat-card .big-num {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 900;
-  font-size: clamp(56px, 8vw, 96px);
-  line-height: 1;
+  font-size: clamp(64px, 9vw, 108px);
+  line-height: 0.9;
   color: #FFF;
-  margin-bottom: 8px;
+  margin-bottom: 0;
+  letter-spacing: -1px;
 }
 .hero-stat-card .big-num span { color: #F60903; }
 .hero-stat-card .stat-label {
@@ -658,12 +694,12 @@ nav {
   background: #0A0A0A;
 }
 .video-wrap {
-  max-width: 380px;
+  max-width: 360px;
   margin: 0 auto;
-  border-radius: 10px;
+  border-radius: 16px;
   overflow: hidden;
-  aspect-ratio: 9/16;
-  position: relative;
+  display: block;
+  width: 100%;
 }
 
 /* ============ TESTIMONIALS ============ */
@@ -707,7 +743,7 @@ nav {
   min-height: 48px;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
-  background: #F60903;
+  background: #222;
   color: #FFF;
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 900;
@@ -1067,10 +1103,12 @@ footer {
   .hero-sub { font-size: 16px; }
   .hero-ctas { flex-direction: column; gap: 10px; }
   .hero-ctas .btn { width: 100%; justify-content: center; padding: 16px 24px; }
-  .hero-visual { aspect-ratio: 4/3; }
-  .hero-stat-card { padding: 24px 20px; }
-  .hero-stat-card .big-num { font-size: clamp(48px, 14vw, 72px); }
-  .hero-stat-card .h-brush { font-size: 22px; }
+  .hero-visual { min-height: 220px; }
+  .hero-stat-card { padding: 28px 16px; }
+  .hero-stat-card .big-num { font-size: clamp(60px, 16vw, 80px); }
+  .hero-stat-card .h-brush { font-size: 20px; }
+  .hero-stat-row .stat-item { padding: 0 16px; }
+  .hero-stat-row .stat-item .stat-val { font-size: 28px; }
 
   /* Logos */
   .logo-circle { width: 80px; height: 80px; padding: 8px; }
@@ -1116,34 +1154,49 @@ footer {
   .final-cta-inner { grid-template-columns: 1fr; gap: 32px; }
   .final-cta h2 { font-size: clamp(32px, 9vw, 52px); }
 
-  /* Formulário Kommo no mobile: remove o card escuro, fica limpo sobre o vermelho */
+  /* Formulário Kommo no mobile */
   .kommo-form-wrap {
-    background: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-    padding: 0 !important;
+    background: rgba(0,0,0,0.35) !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+    border-radius: 12px !important;
+    padding: 24px 16px !important;
+    max-width: 420px;
+    margin: 0 auto;
   }
-  /* Inputs com fundo branco semitransparente para contrastar no vermelho */
+  #kommo-form-container {
+    max-width: 100% !important;
+  }
+  /* Inputs adaptados ao fundo vermelho/escuro */
   #kommo-form-container input[type="text"],
   #kommo-form-container input[type="email"],
   #kommo-form-container input[type="tel"],
   #kommo-form-container select,
   #kommo-form-container textarea {
-    background: rgba(255,255,255,0.15) !important;
-    border: 1px solid rgba(255,255,255,0.5) !important;
+    background: rgba(255,255,255,0.12) !important;
+    border: 1px solid rgba(255,255,255,0.35) !important;
     color: #FFF !important;
+    font-size: 14px !important;
+    padding: 12px 14px !important;
   }
   #kommo-form-container input::placeholder,
   #kommo-form-container textarea::placeholder {
-    color: rgba(255,255,255,0.5) !important;
+    color: rgba(255,255,255,0.45) !important;
   }
   #kommo-form-container label,
   #kommo-form-container .amoforms-label {
-    color: rgba(255,255,255,0.9) !important;
+    color: rgba(255,255,255,0.85) !important;
+    font-size: 11px !important;
+  }
+  #kommo-form-container button[type="submit"],
+  #kommo-form-container .amoforms-submit,
+  #kommo-form-container input[type="submit"] {
+    padding: 14px !important;
+    font-size: 14px !important;
   }
   .form-alt {
     border-top-color: rgba(255,255,255,0.2) !important;
-    color: rgba(255,255,255,0.75) !important;
+    color: rgba(255,255,255,0.7) !important;
+    font-size: 12px !important;
   }
   .form-alt a { color: #FFF !important; }
 
@@ -1218,14 +1271,15 @@ footer {
         <div class="hero-stat-card">
           <span class="h-brush">O que +500 açougues fizeram</span>
           <div class="big-num">R$<span>594M</span></div>
-          <div style="margin-top:24px; display:grid; grid-template-columns:1fr 1fr; gap:16px; text-align:left;">
-            <div>
-              <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;color:#F60903;line-height:1;">714mil</div>
-              <div style="font-size:12px;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.08em;">Pedidos</div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat-row">
+            <div class="stat-item">
+              <div class="stat-val">714mil</div>
+              <div class="stat-lbl">Pedidos</div>
             </div>
-            <div>
-              <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;color:#F60903;line-height:1;">R$811</div>
-              <div style="font-size:12px;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.08em;">Ticket médio</div>
+            <div class="stat-item">
+              <div class="stat-val">R$811</div>
+              <div class="stat-lbl">Ticket médio</div>
             </div>
           </div>
         </div>
@@ -1274,7 +1328,7 @@ footer {
     <div class="numbers-grid">
       <div class="num-card">
         <div class="num">R$ <span class="red">594M</span></div>
-        <div class="label">Faturados pelos lojistas (2024–2026)</div>
+        <div class="label">Gerados pelos lojistas</div>
       </div>
       <div class="num-card">
         <div class="num"><span class="red">714</span>mil</div>
@@ -1465,9 +1519,9 @@ footer {
         muted
         loop
         playsinline
-        style="width:100%; height:100%; object-fit:cover; display:block;"
+        style="width:100%; height:auto; display:block;"
       >
-        <source src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/pedido(1).mp4" type="video/mp4" />
+        <source src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/v%C3%ADdeo%20sistema%20pedido.mp4" type="video/mp4" />
         Seu navegador não suporta vídeo HTML5.
       </video>
     </div>
@@ -1518,7 +1572,7 @@ footer {
         <div style="color:#F60903; font-size:18px; margin-bottom:12px; letter-spacing:2px;">★★★★★</div>
         <p>A Onbeef se tornou uma ferramenta fundamental e estratégica para nosso negócio. Sua praticidade e agilidade oferecem uma experiência excelente para os clientes.</p>
         <div class="author">
-          <div class="avatar">JM</div>
+          <div class="avatar"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/jose-casa-dibs.webp" alt="José Manoel" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;" /></div>
           <div class="author-info">
             <strong>José Manoel</strong>
             <span>Sócio Proprietário, Casa Dibs Empório das Carnes</span>
@@ -1529,7 +1583,7 @@ footer {
         <div style="color:#F60903; font-size:18px; margin-bottom:12px; letter-spacing:2px;">★★★★★</div>
         <p>O OnBeef foi a cereja do bolo para o nosso serviço de delivery. As ferramentas são realmente feitas para nosso segmento, e as melhorias constantes são notáveis. Hoje, posso afirmar que essa ferramenta é indispensável para nós.</p>
         <div class="author">
-          <div class="avatar">FN</div>
+          <div class="avatar"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/fernando.webp" alt="Fernando Nunes" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;" /></div>
           <div class="author-info">
             <strong>Fernando Novelli</strong>
             <span>Sócio Proprietário, Casa de Carnes Boi Verde</span>
@@ -1540,7 +1594,7 @@ footer {
         <div style="color:#F60903; font-size:18px; margin-bottom:12px; letter-spacing:2px;">★★★★★</div>
         <p>O site foi fundamental para impulsionar minhas vendas e fidelizar clientes. Sua eficiência trouxe novos clientes e um sentimento de mais profissionalismo ao meu negócio. Um verdadeiro salto tecnológico. Tenho apenas elogios!</p>
         <div class="author">
-          <div class="avatar">AA</div>
+          <div class="avatar"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/antonio-acougue-colosso.webp" alt="Antônio Alves" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;" /></div>
           <div class="author-info">
             <strong>Antônio Augusto</strong>
             <span>Sócio Proprietário, Açougue Colosso</span>
