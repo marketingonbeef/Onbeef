@@ -160,6 +160,95 @@ nav {
   .nav-burger { display: block; }
 }
 
+/* ============ TRUST STRIP ============ */
+.trust-strip {
+  background: #111;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 12px 0;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.trust-strip span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 13px;
+  color: rgba(245,245,220,0.85);
+  font-family: 'Poppins', sans-serif;
+  white-space: nowrap;
+}
+.trust-strip span::before {
+  content: '✓';
+  color: #F60903;
+  font-weight: 700;
+}
+.trust-strip-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(246,9,3,0.08);
+  border: 1px solid rgba(246,9,3,0.25);
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 13px;
+  color: rgba(245,245,220,0.9);
+  font-family: 'Poppins', sans-serif;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.trust-strip-rating:hover {
+  background: rgba(246,9,3,0.15);
+  border-color: rgba(246,9,3,0.5);
+  color: #fff;
+}
+.trust-strip-rating .stars {
+  color: #F60903;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+@media (max-width: 600px) {
+  .trust-strip { gap: 8px; padding: 10px 16px; }
+  .trust-strip span { font-size: 12px; padding: 5px 12px; }
+  .trust-strip-rating { font-size: 12px; padding: 5px 12px; }
+}
+
+/* ============ HERO DEMO LINK ============ */
+.hero-demo-link {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-demo-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: rgba(245,245,220,0.55);
+  text-decoration: none;
+  transition: color 0.2s;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+}
+.hero-demo-link a:hover {
+  color: #F60903;
+  border-bottom-color: rgba(246,9,3,0.4);
+}
+.hero-demo-link a::before {
+  content: '▶';
+  font-size: 9px;
+  color: #F60903;
+  opacity: 0.7;
+}
+
 /* ============ HERO ============ */
 .hero {
   min-height: 100vh;
@@ -387,19 +476,19 @@ nav {
   width: 110px;
   height: 110px;
   border-radius: 50%;
-  background: #FFFFFF;
-  border: 2px solid rgba(255,255,255,0.15);
+  background: transparent;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   overflow: hidden;
-  transition: border-color 0.3s, transform 0.3s;
+  transition: transform 0.3s;
 }
-.logo-circle:hover { border-color: rgba(246,9,3,0.6); transform: scale(1.05); }
+.logo-circle:hover { transform: scale(1.05); }
 .logo-circle img {
-  width: 68px;
-  height: 68px;
+  width: 110px;
+  height: 110px;
   object-fit: contain;
   filter: none;
   flex-shrink: 0;
@@ -484,6 +573,7 @@ nav {
 .pain-card {
   background: #000;
   border-left: 3px solid #F60903;
+  transition: transform 0.25s, box-shadow 0.25s;
   padding: 28px 28px 32px;
   border-radius: 4px;
 }
@@ -500,6 +590,10 @@ nav {
   color: #F5F5DC;
   font-size: 16px;
   line-height: 1.5;
+}
+.pain-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(246,9,3,0.18);
 }
 
 /* ============ SOLUTION ============ */
@@ -550,17 +644,16 @@ nav {
 .solution-list li span { color: rgba(245,245,220,0.65); font-size: 15px; }
 
 .solution-visual {
-  background: linear-gradient(135deg, #410F00 0%, #0C0A0A 100%);
-  border-radius: 20px;
-  padding: 50px 40px;
-  text-align: center;
-  border: 1px solid rgba(246,9,3,0.2);
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   overflow: hidden;
 }
-.solution-visual::after {
-  display: none;
-}
+.solution-visual::after { display: none; }
 .solution-visual .h-brush { font-size: 28px; margin-bottom: 8px; }
 .solution-visual .quote-big {
   font-family: 'Barlow Condensed', sans-serif;
@@ -713,8 +806,14 @@ nav {
 .testi-card {
   background: #0A0A0A;
   border: 1px solid rgba(245,245,220,0.08);
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
   border-radius: 8px;
   padding: 32px 28px;
+}
+.testi-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(246,9,3,0.18);
+  border-color: rgba(246,9,3,0.15);
 }
 .testi-card .quote-mark {
   font-family: 'Barlow Condensed', sans-serif;
@@ -778,6 +877,7 @@ nav {
 .diff-card {
   background: #000;
   padding: 32px 24px;
+  transition: transform 0.25s, box-shadow 0.25s;
   border-radius: 8px;
   text-align: center;
 }
@@ -807,6 +907,43 @@ nav {
 .diff-card p {
   color: rgba(245,245,220,0.65);
   font-size: 14px;
+}
+.diff-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(246,9,3,0.18);
+}
+
+/* ============ LOJA CONCEITO CALLOUT ============ */
+.loja-conceito-callout {
+  margin-top: 52px;
+  background: #000;
+  border: 1px solid rgba(246,9,3,0.2);
+  border-radius: 14px;
+  padding: 36px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  transition: box-shadow 0.25s, border-color 0.25s;
+}
+.loja-conceito-callout:hover {
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(246,9,3,0.35);
+  border-color: rgba(246,9,3,0.4);
+}
+.loja-conceito-callout .lc-text .h-brush {
+  font-size: 26px;
+  margin-bottom: 6px;
+  display: block;
+}
+.loja-conceito-callout .lc-text p {
+  color: rgba(245,245,220,0.6);
+  font-size: 15px;
+  max-width: 480px;
+}
+@media (max-width: 600px) {
+  .loja-conceito-callout { padding: 28px 24px; flex-direction: column; align-items: flex-start; }
+  .loja-conceito-callout .btn { width: 100%; justify-content: center; }
 }
 
 /* ============ FORM / CTA FINAL ============ */
@@ -1007,6 +1144,108 @@ nav {
   padding: 0 0 24px;
 }
 
+/* ============ CALCULATOR ============ */
+.calc-section {
+  background: #F60903;
+  padding: 100px 0;
+}
+.calc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+@media (max-width: 900px) { .calc-grid { grid-template-columns: 1fr; gap: 40px; } }
+.calc-text h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(28px, 4vw, 46px);
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 1.05;
+  margin: 10px 0 28px;
+}
+.calc-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.calc-bullets li {
+  color: rgba(255,255,255,0.9);
+  font-size: 15px;
+  padding-left: 24px;
+  position: relative;
+  line-height: 1.4;
+}
+.calc-bullets li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #fff;
+  font-weight: 700;
+}
+.calc-bullets li strong { color: #fff; }
+.calc-card {
+  background: rgba(0,0,0,0.25);
+  border-radius: 20px;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.calc-field { display: flex; flex-direction: column; gap: 8px; }
+.calc-field label {
+  color: rgba(255,255,255,0.9);
+  font-size: 14px;
+  font-weight: 500;
+}
+.calc-field input {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  font-family: 'Barlow Condensed', sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.calc-field input:focus { border-color: rgba(255,255,255,0.7); }
+.calc-btn {
+  background: #fff;
+  color: #F60903;
+  border: none;
+  border-radius: 10px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Barlow Condensed', sans-serif;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.calc-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+.calc-result {
+  background: rgba(0,0,0,0.2);
+  border-radius: 12px;
+  padding: 24px 20px;
+  text-align: center;
+}
+.calc-result-big {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(32px, 5vw, 48px);
+  color: #fff;
+  line-height: 1;
+}
+.calc-result-sub {
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
+  margin-top: 8px;
+}
+
 /* ============ FOOTER ============ */
 footer {
   background: #000;
@@ -1056,10 +1295,15 @@ footer {
 .footer-bottom {
   border-top: 1px solid rgba(245,245,220,0.08);
   padding-top: 24px;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
   color: rgba(245,245,220,0.4);
   font-size: 13px;
 }
+@media (max-width: 600px) { .footer-bottom { justify-content: center; text-align: center; } }
 
 /* ============ WHATSAPP FLOAT ============ */
 .wa-float {
@@ -1234,7 +1478,7 @@ footer {
     </a>
     <div class="nav-links" id="nav-links">
       <a href="#solution" onclick="document.getElementById('nav-links').classList.remove('open')">Como funciona</a>
-      <a href="#cases" onclick="document.getElementById('nav-links').classList.remove('open')">Cases</a>
+      <a href="#testimonials" onclick="document.getElementById('nav-links').classList.remove('open')">Depoimentos</a>
       <a href="#faq" onclick="document.getElementById('nav-links').classList.remove('open')">FAQ</a>
       <a href="#cta" onclick="document.getElementById('nav-links').classList.remove('open')">Contato</a>
     </div>
@@ -1243,6 +1487,15 @@ footer {
   </div>
 </nav>
 
+<!-- ========== TRUST STRIP ========== -->
+<div class="trust-strip">
+  <a href="#testimonials" class="trust-strip-rating"><span class="stars">★★★★★</span> 4.9 · Ver avaliações</a>
+  <span>Cadastro rápido via template</span>
+  <span>Sem multa de cancelamento</span>
+  <span>Suporte 7 dias por semana</span>
+  <span>Feito para açougues</span>
+</div>
+
 <!-- ========== HERO ========== -->
 <section class="hero">
   <div class="container">
@@ -1250,8 +1503,8 @@ footer {
       <div class="reveal in">
         <span class="hero-badge">Sistema exclusivo para açougues</span>
         <h1 class="h-display">
-          Seu cliente quer 600g em bife<br>
-          e 400g em strogonoff<span class="accent">.</span>
+          O sistema de delivery<br>
+          feito para açougues<span class="accent">.</span>
         </h1>
         <p class="hero-sub">
           <strong>Nenhum delivery genérico foi feito pra isso.</strong>
@@ -1259,8 +1512,8 @@ footer {
           de verdade — com gramatura, corte e variação de peso no pedido.
         </p>
         <div class="hero-ctas">
-          <a href="#cta" class="btn btn-primary">Quero ver como funciona</a>
-          <a href="#cases" class="btn btn-ghost">Ver resultados reais</a>
+          <a href="#cta" class="btn btn-primary">Quero vender mais</a>
+          <a href="#solution" class="btn btn-ghost">Ver como funciona</a>
         </div>
         <div class="hero-trust">
           <span class="check">✓</span>
@@ -1270,15 +1523,15 @@ footer {
       <div class="hero-visual reveal in">
         <div class="hero-stat-card">
           <span class="h-brush">O que +500 açougues fizeram</span>
-          <div class="big-num">R$<span>594M</span></div>
+          <div class="big-num">R$<span id="hero-faturamento">594M</span></div>
           <div class="hero-stat-divider"></div>
           <div class="hero-stat-row">
             <div class="stat-item">
-              <div class="stat-val">714mil</div>
+              <div class="stat-val"><span id="hero-pedidos">714</span>mil</div>
               <div class="stat-lbl">Pedidos</div>
             </div>
             <div class="stat-item">
-              <div class="stat-val">R$811</div>
+              <div class="stat-val">R$<span id="hero-ticket">811</span></div>
               <div class="stat-lbl">Ticket médio</div>
             </div>
           </div>
@@ -1295,25 +1548,38 @@ footer {
   </div>
   <div class="logos-carousel-wrap">
     <div class="logos-track" id="logos-track">
-      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/acogue-coloso-300x300.webp" alt="Cliente Onbeef" /></div>
-      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/Logos-Site-3-1-300x300.png" alt="Cliente Onbeef" /></div>
-      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/9-1-300x300.png" alt="Cliente Onbeef" /></div>
-      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/6-1-300x300.png" alt="Cliente Onbeef" /></div>
-      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/4-1-300x300.png" alt="Cliente Onbeef" /></div>
-      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/3-1-300x300.png" alt="Cliente Onbeef" /></div>
-      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/2-300x300.png" alt="Cliente Onbeef" /></div>
-      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/10-300x300.png" alt="Cliente Onbeef" /></div>
-      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/1-1-300x300.png" alt="Cliente Onbeef" /></div>
+      <!-- set 1 -->
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/1.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/2.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/3.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/5.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/6.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/7.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/8.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/9.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/10.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/11.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/12.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/13.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/14.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/15.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/16.png" alt="Cliente Onbeef" /></div>
       <!-- duplicado para loop infinito -->
-      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/acogue-coloso-300x300.webp" alt="Cliente Onbeef" /></div>
-      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/Logos-Site-3-1-300x300.png" alt="Cliente Onbeef" /></div>
-      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/9-1-300x300.png" alt="Cliente Onbeef" /></div>
-      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/6-1-300x300.png" alt="Cliente Onbeef" /></div>
-      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/4-1-300x300.png" alt="Cliente Onbeef" /></div>
-      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/3-1-300x300.png" alt="Cliente Onbeef" /></div>
-      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/2-300x300.png" alt="Cliente Onbeef" /></div>
-      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/10-300x300.png" alt="Cliente Onbeef" /></div>
-      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/1-1-300x300.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/1.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/2.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/3.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/5.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/6.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/7.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/8.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/9.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/10.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/11.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/12.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/13.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/14.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/15.png" alt="Cliente Onbeef" /></div>
+      <div class="logo-circle"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/16.png" alt="Cliente Onbeef" /></div>
     </div>
   </div>
 </section>
@@ -1430,8 +1696,11 @@ footer {
           </li>
         </ul>
       </div>
-      <div class="solution-visual" style="padding:0; overflow:hidden; background:none; border:none;">
-        <img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/corte%20nobre%20print.png" alt="Sistema Onbeef em uso" style="width:100%; height:100%; object-fit:cover; display:block; border-radius:20px;" />
+      <div class="solution-visual">
+        <video autoplay muted loop playsinline
+          style="width:100%; height:auto; display:block; border-radius:20px;">
+          <source src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/v%C3%ADdeo%20sistema%20mockup%20preto.mp4" type="video/mp4" />
+        </video>
       </div>
     </div>
   </div>
@@ -1459,74 +1728,7 @@ footer {
   </div>
 </section>
 
-<!-- ========== CASES ========== -->
-<section class="cases" id="cases">
-  <div class="container">
-    <div class="section-title">
-      <span class="h-brush">Quem já decidiu</span>
-      <h2>Resultado real. Número real<span class="red-dot"></span></h2>
-      <p>Açougues de todos os tamanhos. Do balcão ao delivery escalado.</p>
-    </div>
-    <div class="cases-grid">
-      <div class="case-card">
-        <span class="tag">● Açougue em crescimento</span>
-        <div class="case-num">R$ 2,8M</div>
-        <div class="case-num-label">faturamento anual</div>
-        <div class="case-stats">
-          <div><strong>~24/dia</strong><span>pedidos</span></div>
-          <div><strong>8.782</strong><span>pedidos/ano</span></div>
-          <div><strong>R$ 493</strong><span>ROI / R$ 1 investido</span></div>
-          <div><strong>Delivery</strong><span>organizado</span></div>
-        </div>
-      </div>
-      <div class="case-card">
-        <span class="tag">● Açougue consolidado</span>
-        <div class="case-num">R$ 3,7M</div>
-        <div class="case-num-label">faturamento anual</div>
-        <div class="case-stats">
-          <div><strong>~43/dia</strong><span>pedidos</span></div>
-          <div><strong>15.649</strong><span>pedidos/ano</span></div>
-          <div><strong>R$ 1.080</strong><span>ROI / R$ 1 investido</span></div>
-          <div><strong>Zero taxa</strong><span>por pedido</span></div>
-        </div>
-      </div>
-      <div class="case-card">
-        <span class="tag">● Açougue escalado</span>
-        <div class="case-num">R$ 7,2M</div>
-        <div class="case-num-label">faturamento em 12 meses</div>
-        <div class="case-stats">
-          <div><strong>~76/dia</strong><span>pedidos</span></div>
-          <div><strong>27.964</strong><span>pedidos/ano</span></div>
-          <div><strong>R$ 2.074</strong><span>ROI / R$ 1 investido</span></div>
-          <div><strong>R$ 515</strong><span>ticket médio</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ========== VIDEO ========== -->
-<section class="video-section">
-  <div class="container">
-    <div class="section-title">
-      <span class="h-brush">Veja na prática</span>
-      <h2>O sistema funcionando de verdade<span class="red-dot"></span></h2>
-    </div>
-    <div class="video-wrap">
-      <video
-        controls
-        autoplay
-        muted
-        loop
-        playsinline
-        style="width:100%; height:auto; display:block;"
-      >
-        <source src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/v%C3%ADdeo%20sistema%20pedido.mp4" type="video/mp4" />
-        Seu navegador não suporta vídeo HTML5.
-      </video>
-    </div>
-  </div>
-</section>
 
 <!-- ========== DIFFERENTIALS ========== -->
 <section class="diff">
@@ -1557,11 +1759,23 @@ footer {
         <p>Banco de fotos profissionais de produto disponível pra você usar.</p>
       </div>
     </div>
+
+    <!-- Loja Conceito Callout -->
+    <div class="loja-conceito-callout">
+      <div class="lc-text">
+        <span class="h-brush">Quer ver como funciona na prática?</span>
+        <p>Acesse uma loja Onbeef real e experimente a experiência do cliente — do cardápio ao checkout.</p>
+      </div>
+      <a href="https://loja-conceito.onbeef.app.br/" target="_blank" rel="noopener" class="btn btn-primary">
+        Experimentar na prática →
+      </a>
+    </div>
+
   </div>
 </section>
 
 <!-- ========== TESTIMONIALS ========== -->
-<section class="testimonials">
+<section class="testimonials" id="testimonials">
   <div class="container">
     <div class="section-title">
       <span class="h-brush">Depoimento de quem usa</span>
@@ -1644,6 +1858,39 @@ footer {
   </div>
 </section>
 
+<!-- ========== CALCULATOR ========== -->
+<section class="calc-section">
+  <div class="container">
+    <div class="calc-grid">
+      <div class="calc-text">
+        <span class="h-brush" style="color:#fff;">Calcule seu potencial</span>
+        <h2>Descubra quanto a Onbeef pode adicionar ao seu faturamento<span class="red-dot" style="color:#fff;"></span></h2>
+        <ul class="calc-bullets">
+          <li>Lojistas relatam aumento médio de <strong>5% a 20%</strong> no ticket médio</li>
+          <li>Setup rápido via template — comece a vender em dias</li>
+          <li>Sem multa de cancelamento — experimente sem risco</li>
+          <li>Suporte 7 dias por semana, manhã, tarde e noite</li>
+        </ul>
+      </div>
+      <div class="calc-card">
+        <div class="calc-field">
+          <label>Quantos pedidos você faz por dia no WhatsApp?</label>
+          <input type="number" id="calc-pedidos" value="20" min="1" />
+        </div>
+        <div class="calc-field">
+          <label>Qual o ticket médio por pedido? (R$)</label>
+          <input type="number" id="calc-ticket" value="130" min="1" />
+        </div>
+        <button class="calc-btn" onclick="calcularPotencial()">Calcular meu potencial 🚀</button>
+        <div class="calc-result" id="calc-result">
+          <div class="calc-result-big" id="calc-result-anual">até R$ 0/ano</div>
+          <div class="calc-result-sub" id="calc-result-mensal">Aproximadamente R$ 0/mês a mais no faturamento</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ========== FAQ ========== -->
 <section class="faq" id="faq">
   <div class="container">
@@ -1706,16 +1953,14 @@ footer {
       <div class="footer-col">
         <a href="#"><img src="https://raw.githubusercontent.com/marketingonbeef/marketingonbeef.github.io/main/logo%20onbeef.png" alt="Onbeef" style="height:36px; margin-bottom:16px; display:block;" /></a>
         <p class="footer-about">
-          Sistema de delivery feito exclusivamente para açougues,
-          boutiques e casas de carne. Construído do zero pra quem
-          vende carne de verdade.
+          A plataforma de delivery N°1 para açougues, boutiques e
+          casas de carne da América Latina.
         </p>
       </div>
       <div class="footer-col">
         <h5>Onbeef</h5>
         <ul>
           <li><a href="#">Sobre</a></li>
-          <li><a href="#cases">Cases</a></li>
           <li><a href="#">Planos</a></li>
         </ul>
       </div>
@@ -1738,7 +1983,8 @@ footer {
       </div>
     </div>
     <div class="footer-bottom">
-      © 2026 Onbeef. Feito com peso pra quem vende carne.
+      <span>© 2026 OnBeef. Todos os direitos reservados.</span>
+      <span>Feito com ❤️ para açougues brasileiros</span>
     </div>
   </div>
 </footer>
@@ -1751,6 +1997,21 @@ footer {
 </a>
 
 <script>
+// Calculadora de crescimento
+function calcularPotencial() {
+  const pedidos = parseFloat(document.getElementById('calc-pedidos').value) || 0;
+  const ticket  = parseFloat(document.getElementById('calc-ticket').value)  || 0;
+  const adicionalAnual = Math.round(pedidos * ticket * 0.15 * 365);
+  const adicionalMensal = Math.round(adicionalAnual / 12);
+  const fmt = n => n >= 1000000
+    ? 'R$ ' + (n/1000000).toFixed(1).replace('.',',') + 'M'
+    : 'R$ ' + n.toLocaleString('pt-BR');
+  document.getElementById('calc-result-anual').textContent  = 'até ' + fmt(adicionalAnual) + '/ano';
+  document.getElementById('calc-result-mensal').textContent = 'Aproximadamente ' + fmt(adicionalMensal) + '/mês a mais no faturamento';
+}
+// Calcular ao carregar com valores padrão
+window.addEventListener('DOMContentLoaded', calcularPotencial);
+
 // FAQ toggle
 document.querySelectorAll('.faq-question').forEach(q => {
   q.addEventListener('click', () => {
